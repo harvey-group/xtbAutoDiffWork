@@ -1,0 +1,12 @@
+VDW params
+H  1.20000  0.0300
+C  1.75000  0.0700
+Bond stretching (kcal/mol/Angstrom and Angstrom)
+C C  300.0  1.5300
+C H  350.0  1.1100
+Bending terms (kcal/mol/radian and degrees)
+H C H 35.00  109.50
+H C C 35.00  109.50
+C C C 60.00  109.50
+Torsion terms (kcal/mol)
+0.300
