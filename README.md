@@ -17,9 +17,9 @@ i) The Julia AutoDiff library Zygote then can be used to compute the gradient, a
 j) The function GeomOpt runs geometry optimization with BFGS, using the DirectEnergy / Zygote technique to get gradients.
 
 2. xTB. Here there is working GFN1-xTB energy calculation, but the code does not work with autodifferentiation. The uploaded code tries
-to use the library ReverseDiff, but I also tried others and hit similar problems. 
+to use the library Zygote, but I also tried others and hit similar problems. 
 My initial attempts did not work because the various parts of the xTB code were not careful enough with building various arrays such that
-the AutoDiff libraries were confused. I rewote many functions to involves straightforward assignment/comprehension statements such that 
+the AutoDiff libraries were confused. I rewrote many functions to involve straightforward assignment/comprehension statements such that 
 arrays are built directly. My goal was to create a function "Lagrangian" which would take the final orbital coefficients, final orbital
 energies, and the overlap matrix, charges, and so on, and re-evaluate the energy including the orthogonal terms. Then I would apply
 AutoDiff to that function. The code new_xtb_julia.jl successfully calculates the energy (it requires to be run with "julia new_xtb_julia.jl {filename}.xyz",
@@ -27,5 +27,8 @@ I attach the required parameters file parameters3.dat and the sample input metha
 does NOT match the SCF energy so evenm the Lagrangian is built incorrectly. I abandoned the project at this point because I could not
 get the AutoDiff to work. I am confident the Lagrangian can be fixed quite easily. The "hard nut" at this point for me is getting
 the AutoDiff to work.
+Update: I noticed an error in new_xtb_julia concerning the way the Lagrangian was expressed. After revising this, I get the modified code
+newer_xtb_julia, in which the Lagrangian now comes out correct, equal to the energy. The automatic differentiation still does not work.
+
 
 
